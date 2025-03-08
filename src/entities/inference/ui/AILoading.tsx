@@ -26,7 +26,7 @@ export const AILoading = () => {
 
     // 정12면체의 선만 그리기 위해 LineSegments 사용
     const geometry = new THREE.DodecahedronGeometry(5); // 반지름이 5인 정12면체
-    const material = new THREE.LineBasicMaterial({ color: 0x000000 }); // 검은 선으로 설정
+    const material = new THREE.LineBasicMaterial({ color: 0x31ac21 }); // 검은 선으로 설정
     const edges = new THREE.EdgesGeometry(geometry); // 정12면체의 모서리만 추출
     const line = new THREE.LineSegments(edges, material);
     scene.add(line);

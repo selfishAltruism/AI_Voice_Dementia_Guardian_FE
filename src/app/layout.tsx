@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { Nanum_Gothic } from "next/font/google";
+import "./globals.css";
+
+import { Footer } from "@/entities/layout";
 
 const nanumGothic = Nanum_Gothic({
   subsets: ["latin"],
@@ -25,9 +27,7 @@ export default function RootLayout({
           <main className="flex-grow flex flex-col justify-center items-center">
             {children}
           </main>
-          <footer className="bg-[#000000] text-white text-center p-4 text-sm">
-            <p>&copy; 2025 My Website. All rights reserved.</p>
-          </footer>
+          <Footer />
         </div>
       </body>
     </html>

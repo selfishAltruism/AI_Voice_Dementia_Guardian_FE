@@ -1,7 +1,9 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-export const Loading = () => {
+export const AILoading = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {

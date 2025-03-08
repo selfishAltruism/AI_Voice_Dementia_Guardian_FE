@@ -1,12 +1,14 @@
 "use client";
 
-import { Loading } from "@/entities/inference/ui/Loading";
+import { AILoading } from "@/entities/inference";
+import { LinkButton } from "@/entities/layout";
 
 export default function Home() {
   return (
     <>
-      <Loading />
+      <AILoading />
       <p>이 폰트는 세련된 디자인을 제공합니다.</p>
+      <LinkButton title="TITEL" to="/form" disabled></LinkButton>
     </>
   );
 }

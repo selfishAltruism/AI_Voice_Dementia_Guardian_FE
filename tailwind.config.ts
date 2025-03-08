@@ -13,6 +13,7 @@ export default {
       coreBg: "#31ac2118",
       black: "#000000",
       white: "#ffffff",
+      gray: "rgba(0, 0, 0, 0.7)",
     },
     extend: {
       animation: {
@@ -20,9 +21,8 @@ export default {
       },
       keyframes: {
         gradientBG: {
-          "0%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-          "100%": { backgroundPosition: "00% 50%" },
+          "0%": { backgroundPosition: "200% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
         },
       },
     },

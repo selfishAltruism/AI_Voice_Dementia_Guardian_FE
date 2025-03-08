@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-export const AILoading = () => {
+export const AILoading = ({ small }: { small?: boolean }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -14,8 +14,8 @@ export const AILoading = () => {
     const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
 
     // 화면 크기를 비율에 맞게 설정하되, 고정 최대 크기 지정
-    const maxWidth = 500; // 최대 너비
-    const maxHeight = 500; // 최대 높이
+    const maxWidth = small ? 60 : 500; // 최대 너비
+    const maxHeight = small ? 120 : 500; // 최대 높이
 
     const canvasWidth = Math.min(window.innerWidth, maxWidth); // 화면 너비와 최대 너비 중 작은 값
     const canvasHeight = Math.min(window.innerHeight, maxHeight); // 화면 높이와 최대 높이 중 작은 값

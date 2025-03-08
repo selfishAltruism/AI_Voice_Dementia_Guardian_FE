@@ -1,0 +1,12 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "prettier.plugins": ["prettier-plugin-tailwindcss"],
+  "prettier.tailwindConfig": "./tailwind.config.js",
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.experimental.classRegex": ["tw`([^`]*)`", "tw\\(([^)]*)\\)"]
+}

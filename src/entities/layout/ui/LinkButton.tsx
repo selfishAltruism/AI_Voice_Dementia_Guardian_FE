@@ -11,7 +11,7 @@ export const LinkButton = ({
 }) => (
   <Link
     href={disabled ? "#" : to}
-    className="hover:animate-gradient fixed bottom-32 right-12 rounded-md bg-gradient-to-r from-[#7cfc6b] to-core bg-[length:200%_200%] px-5 py-3 text-xl text-white transition-all duration-500"
+    className="fixed bottom-32 right-12 rounded-md bg-gradient-to-r from-[#7cfc6b] to-core bg-[length:200%_200%] px-10 py-3 text-xl text-white transition-all duration-500 hover:animate-gradient"
   >
     <strong>{title}</strong>
   </Link>

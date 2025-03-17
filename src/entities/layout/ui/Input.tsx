@@ -1,15 +1,42 @@
 "use client";
 
+import { ReactNode } from "react";
+
 const baseInputStyle =
   "w-full p-2 border rounded-md shadow-sm focus:ring-2 focus:ring-core focus:outline-none";
 const labelStyle = "block text-lg font-medium text-gray-700 mb-1";
 
-export function InputText({ label, value, onChange, placeholder }) {
+export const InputContainer = ({
+  label,
+  children,
+}: {
+  label: string;
+  children: ReactNode;
+}) => (
+  <div>
+    <label className={labelStyle + "mb-0"}>{label}</label>
+    {children}
+  </div>
+);
+
+export function InputText({
+  label,
+  value,
+  onChange,
+  placeholder,
+  password,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  password?: boolean;
+}) {
   return (
     <div>
       <label className={labelStyle}>{label}</label>
       <input
-        type="text"
+        type={!password ? "text" : "password"}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}

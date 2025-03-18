@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import { addDynamicIconSelectors } from "@iconify/tailwind";
+// const { addDynamicIconSelectors } = require("@iconify/tailwind");
 
 export default {
   content: [
@@ -14,6 +16,7 @@ export default {
       black: "#000000",
       white: "#ffffff",
       gray: "rgba(0, 0, 0, 0.7)",
+      litegray: "rgba(0, 0, 0, 0.07)",
     },
     extend: {
       animation: {
@@ -27,5 +30,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [addDynamicIconSelectors()],
 } satisfies Config;

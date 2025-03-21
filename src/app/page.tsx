@@ -13,7 +13,7 @@ export default function Home() {
         </div>
         <h1>치매 지킴이</h1>
       </div>
-      <div className="h-[300px] w-[2px] rounded-md bg-white" />
+      <div className="h-[345px] w-[2px] rounded-md bg-white" />
       <div className="text-start leading-relaxed">
         <strong>AI 치매 지킴이</strong>는 음성 분석 AI 기술을 활용하여
         <br />
@@ -32,7 +32,7 @@ export default function Home() {
         AI를 활용한 치매 위험군을 조기에 선별
         <br />
         <div className="h-4" />
-        <p className="text-lg font-bold">
+        <p className="text-xl font-bold">
           👉 하단 시작 버튼을 통해 인지 건강을 손쉽게 확인하세요!
         </p>
       </div>

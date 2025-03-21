@@ -15,7 +15,7 @@ const PersonalInfo = () => {
   return (
     <>
       <h1>기본 인적 사항</h1>
-      <div className="mb-2 mt-1 h-[7px] w-[300px] rounded-lg bg-gradient-to-r from-[#7cfc6b] to-core bg-[length:200%_200%]"></div>
+      <div className="mb-2 mt-1 h-[7px] w-[300px] rounded-lg bg-gradient-to-r from-sub to-main bg-[length:200%_200%]"></div>
       <div className="mt-3 flex w-full flex-col items-center justify-center gap-8 md:flex-row">
         <div className="flex w-1/5 flex-col gap-6">
           <InputText

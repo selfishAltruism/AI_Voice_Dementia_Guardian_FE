@@ -10,7 +10,6 @@ export default {
   ],
   theme: {
     colors: {
-      core: "#31ac21",
       main: "#002f4b",
       sub: "#64004b",
       black: "#000000",

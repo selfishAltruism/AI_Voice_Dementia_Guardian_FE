@@ -3,7 +3,7 @@
 import { ReactNode } from "react";
 
 const baseInputStyle =
-  "w-full p-2 border rounded-md shadow-sm focus:ring-2 focus:ring-core focus:outline-none";
+  "w-full p-2 border rounded-md shadow-sm focus:ring-2 focus:ring-white focus:outline-none placeholder-main";
 const labelStyle = "block text-lg font-medium text-gray-700 mb-1";
 
 export const InputContainer = ({
@@ -68,7 +68,7 @@ export function InputSelect({ label, options, value, onChange }) {
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className={`${baseInputStyle} border-gray-300 h-[42px] bg-white`}
+        className={`${baseInputStyle} border-gray-300 h-[42px] bg-white text-main`}
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>

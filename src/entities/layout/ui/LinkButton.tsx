@@ -11,18 +11,18 @@ export const LinkButton = ({
   title: string;
   disabled?: boolean;
 }) => (
-  <div className="fixed bottom-32 right-12 flex gap-2 text-xl text-white">
+  <div className="fixed bottom-32 right-12 flex gap-2 text-2xl text-white">
     {back && (
       <Link
         href=".."
-        className="rounded-md border border-white bg-gradient-to-r px-10 py-3 pt-4 text-2xl"
+        className="flex h-[59px] w-[59px] items-center justify-center rounded-md border border-white bg-white bg-gradient-to-r text-5xl text-sub"
       >
         <span className="icon-[weui--back-filled]"></span>
       </Link>
     )}
     <Link
       href={disabled ? "#" : to}
-      className="from-sub border-whit to-main rounded-md border bg-gradient-to-r bg-[length:200%_200%] px-10 py-3 transition-all duration-500 hover:animate-gradient"
+      className="border-whit rounded-md border bg-gradient-to-r from-sub to-main bg-[length:200%_200%] px-10 py-3 transition-all duration-500 hover:animate-gradient"
     >
       <strong>{title}</strong>
     </Link>

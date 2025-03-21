@@ -9,9 +9,11 @@ export const AILoading = ({ small }: { small?: boolean }) => {
   useEffect(() => {
     // 씬, 카메라, 렌더러 설정
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff); // 배경을 흰색으로 설정
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000); // 카메라 비율 설정
-    const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvasRef.current,
+      alpha: true,
+    });
 
     // 화면 크기를 비율에 맞게 설정하되, 고정 최대 크기 지정
     const maxWidth = small ? 60 : 500; // 최대 너비
@@ -26,7 +28,7 @@ export const AILoading = ({ small }: { small?: boolean }) => {
 
     // 정12면체의 선만 그리기 위해 LineSegments 사용
     const geometry = new THREE.DodecahedronGeometry(5); // 반지름이 5인 정12면체
-    const material = new THREE.LineBasicMaterial({ color: 0x31ac21 }); // 검은 선으로 설정
+    const material = new THREE.LineBasicMaterial({ color: 0xffffff }); // 검은 선으로 설정
     const edges = new THREE.EdgesGeometry(geometry); // 정12면체의 모서리만 추출
     const line = new THREE.LineSegments(edges, material);
     scene.add(line);

@@ -15,14 +15,14 @@ export const LinkButton = ({
     {back && (
       <Link
         href=".."
-        className="bg-litegray rounded-md bg-gradient-to-r px-10 py-3 pt-4 text-2xl text-black"
+        className="rounded-md border border-white bg-gradient-to-r px-10 py-3 pt-4 text-2xl"
       >
         <span className="icon-[weui--back-filled]"></span>
       </Link>
     )}
     <Link
       href={disabled ? "#" : to}
-      className="rounded-md bg-gradient-to-r from-[#7cfc6b] to-core bg-[length:200%_200%] px-10 py-3 pt-4 transition-all duration-500 hover:animate-gradient"
+      className="from-sub border-whit to-main rounded-md border bg-gradient-to-r bg-[length:200%_200%] px-10 py-3 transition-all duration-500 hover:animate-gradient"
     >
       <strong>{title}</strong>
     </Link>

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  color: white;
+  background: linear-gradient(310deg, #64004b, #002f4b);
+}
+
 h1 {
   font-size: 45px;
   font-weight: bolder;

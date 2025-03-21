@@ -11,8 +11,8 @@ export default {
   theme: {
     colors: {
       core: "#31ac21",
-      litecore: "#7cfc6b",
-      coreBg: "#31ac2118",
+      main: "#002f4b",
+      sub: "#64004b",
       black: "#000000",
       white: "#ffffff",
       gray: "rgba(0, 0, 0, 0.7)",

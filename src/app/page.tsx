@@ -13,8 +13,8 @@ export default function Home() {
         </div>
         <h1>치매 지킴이</h1>
       </div>
-      <div className="h-[300px] w-[2px] rounded-md bg-litecore" />
-      <div className="text-start leading-relaxed text-gray">
+      <div className="h-[300px] w-[2px] rounded-md bg-white" />
+      <div className="text-start leading-relaxed">
         <strong>AI 치매 지킴이</strong>는 음성 분석 AI 기술을 활용하여
         <br />
         간단한 대화를 통해 인지 기능을 점검할 수 있는 서비스 입니다. <br />

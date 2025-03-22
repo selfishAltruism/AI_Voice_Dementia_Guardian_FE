@@ -19,6 +19,7 @@ export function Recorder() {
         analyser.current = audioCtx.current.createAnalyser();
         source.current = audioCtx.current.createMediaStreamSource(stream);
         source.current.connect(analyser.current);
+        analyser.current.fftSize = 1024; // 세밀한 주파수 분석
         visualize();
 
         mediaRecorder.current = new MediaRecorder(stream);
@@ -45,22 +46,40 @@ export function Recorder() {
     if (!canvasRef.current || !analyser.current) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d")!;
-    analyser.current.fftSize = 256;
-    const bufferLength = analyser.current.frequencyBinCount;
+    const bufferLength = analyser.current.fftSize;
     const dataArray = new Uint8Array(bufferLength);
+    let prevDataArray = new Float32Array(bufferLength).fill(128); // 초기값 설정
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t; // 선형 보간 함수
 
     const draw = () => {
       if (!analyser.current) return;
-      analyser.current.getByteFrequencyData(dataArray);
+      analyser.current.getByteTimeDomainData(dataArray);
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "white"; // 선 색상
 
-      dataArray.forEach((value, index) => {
-        const x = (index / bufferLength) * canvas.width;
-        const y = (value / 255) * canvas.height;
-        ctx.fillStyle = "rgb(50, 150, 250)";
-        ctx.fillRect(x, canvas.height - y, canvas.width / bufferLength, y);
-      });
+      const sliceWidth = canvas.width / bufferLength;
+      let x = 0;
 
+      for (let i = 0; i < bufferLength; i++) {
+        prevDataArray[i] = lerp(prevDataArray[i], dataArray[i], 0.2); // 변화량 20%만 반영
+
+        const v = prevDataArray[i] / 128.0;
+        const y = (v * canvas.height) / 2;
+
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+
+        x += sliceWidth;
+      }
+
+      ctx.stroke();
       animationFrameId.current = requestAnimationFrame(draw);
     };
 
@@ -74,12 +93,14 @@ export function Recorder() {
   };
 
   return (
-    <div className="bg-gray-100 flex w-96 flex-col items-center gap-4 rounded-lg p-6 shadow-lg">
+    <div className="bg-gray-900 flex w-96 flex-col items-center gap-4 rounded-lg p-6 shadow-lg">
+      {/* 배경 투명 + 웨이브 그래프 */}
       <canvas
         ref={canvasRef}
         width={300}
         height={100}
-        className="rounded bg-white"
+        className="rounded"
+        style={{ backgroundColor: "transparent" }}
       />
       <button
         onClick={() => setRecording(!recording)}
@@ -95,7 +116,7 @@ export function Recorder() {
           <a
             href={audioUrl}
             download="recording.webm"
-            className="text-blue-600 underline"
+            className="text-blue-400 underline"
           >
             다운로드
           </a>

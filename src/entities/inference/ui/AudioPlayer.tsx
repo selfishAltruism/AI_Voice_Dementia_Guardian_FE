@@ -46,16 +46,15 @@ export function AudioPlayer({
   };
 
   return (
-    <>
+    <div className="flex w-64 justify-center">
       {playing ? (
-        <BounceLoader color="white" className="mt-[62px]" />
+        <BounceLoader color="white" className="mb-1" />
       ) : (
-        <Button className="mt-12" onClick={togglePlay}>
+        <Button onClick={togglePlay}>
           {isReplay.current ? "다시 듣기" : "시작"}
         </Button>
       )}
-
       <audio ref={audioRef} src={audioSrc} className="hidden" />
-    </>
+    </div>
   );
 }

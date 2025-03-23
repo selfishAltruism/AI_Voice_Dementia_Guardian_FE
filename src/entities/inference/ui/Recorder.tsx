@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export function Recorder() {
+export function Recorder({ children }: { children: React.ReactNode }) {
   const [recording, setRecording] = useState(false);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const mediaRecorder = useRef<MediaRecorder | null>(null);
@@ -93,25 +93,33 @@ export function Recorder() {
   };
 
   return (
-    <>
+    <div className="flex flex-col items-center justify-center">
       {/* 배경 투명 + 웨이브 그래프 */}
-      <canvas
-        ref={canvasRef}
-        width={800}
-        height={300}
-        className="rounded"
-        style={{ backgroundColor: "transparent" }}
-      />
-      <button
-        onClick={() => setRecording(!recording)}
-        className={`flex h-[100px] w-[100px] items-center justify-center rounded-lg text-white transition`}
-      >
-        {!recording ? (
-          <span className="icon-[fluent--record-24-regular] text-[100px]" />
-        ) : (
-          <span className="icon-[fluent--record-stop-32-regular] mr-[1px] text-[95px]" />
-        )}
-      </button>
+      {recording ? (
+        <canvas
+          ref={canvasRef}
+          width={800}
+          height={150}
+          className="rounded"
+          style={{ backgroundColor: "transparent", marginBottom: "30px" }}
+        />
+      ) : (
+        <div className="mb-[105px] mt-[73px] h-[2px] w-[800px] rounded-md bg-white" />
+      )}
+      <div className="flex items-center gap-12">
+        <button
+          onClick={() => setRecording(!recording)}
+          className={`flex h-[100px] w-[100px] items-center justify-center rounded-lg text-white transition`}
+        >
+          {!recording ? (
+            <span className="icon-[fluent--record-24-regular] text-[100px]" />
+          ) : (
+            <span className="icon-[fluent--record-stop-32-regular] mr-[1px] text-[95px]" />
+          )}
+        </button>
+        {children}
+      </div>
+
       {/* {audioUrl && (
         <div className="flex flex-col items-center gap-2">
           <audio controls src={audioUrl} />
@@ -124,6 +132,6 @@ export function Recorder() {
           </a>
         </div>
       )} */}
-    </>
+    </div>
   );
 }

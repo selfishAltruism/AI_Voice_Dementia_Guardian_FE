@@ -93,24 +93,26 @@ export function Recorder() {
   };
 
   return (
-    <div className="bg-gray-900 flex w-96 flex-col items-center gap-4 rounded-lg p-6 shadow-lg">
+    <>
       {/* 배경 투명 + 웨이브 그래프 */}
       <canvas
         ref={canvasRef}
-        width={300}
-        height={100}
+        width={800}
+        height={300}
         className="rounded"
         style={{ backgroundColor: "transparent" }}
       />
       <button
         onClick={() => setRecording(!recording)}
-        className={`rounded-lg px-4 py-2 text-white transition ${
-          recording ? "bg-red-500" : "bg-blue-500"
-        }`}
+        className={`flex h-[100px] w-[100px] items-center justify-center rounded-lg text-white transition`}
       >
-        {recording ? "녹음 중지" : "녹음 시작"}
+        {!recording ? (
+          <span className="icon-[fluent--record-24-regular] text-[100px]" />
+        ) : (
+          <span className="icon-[fluent--record-stop-32-regular] mr-[1px] text-[95px]" />
+        )}
       </button>
-      {audioUrl && (
+      {/* {audioUrl && (
         <div className="flex flex-col items-center gap-2">
           <audio controls src={audioUrl} />
           <a
@@ -121,7 +123,7 @@ export function Recorder() {
             다운로드
           </a>
         </div>
-      )}
-    </div>
+      )} */}
+    </>
   );
 }

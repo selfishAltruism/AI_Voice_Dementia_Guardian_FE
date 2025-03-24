@@ -89,7 +89,7 @@ const PersonalInfo = () => {
         </div>
       </div>
 
-      <LinkButton title="다음" to="/inference" back />
+      <LinkButton title="다음" to="/inference/1" back />
     </>
   );
 };

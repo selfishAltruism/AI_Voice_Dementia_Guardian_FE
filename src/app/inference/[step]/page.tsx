@@ -4,9 +4,17 @@ import { Recorder, AudioPlayer } from "@/entities/inference";
 import { Button } from "@/entities/layout";
 import { useRef, useState } from "react";
 
-const Inference = () => {
+const Inference = ({
+  params: { step },
+}: {
+  params: {
+    step: string;
+  };
+}) => {
   const [playing, setPlaying] = useState(false);
   const isReplay = useRef(false);
+
+  console.log(step);
 
   return (
     <>

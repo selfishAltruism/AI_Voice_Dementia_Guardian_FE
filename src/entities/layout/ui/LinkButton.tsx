@@ -22,7 +22,7 @@ export const LinkButton = ({
     )}
     <Link
       href={disabled ? "#" : to}
-      className="border-whit rounded-md border bg-gradient-to-r from-sub to-main bg-[length:200%_200%] px-10 py-3 transition-all duration-500 hover:animate-gradient"
+      className="border-whit rounded-md border bg-gradient-to-r from-sub to-main bg-[length:200%_200%] px-10 py-3 transition-all duration-500 active:animate-gradient"
     >
       <strong>{title}</strong>
     </Link>

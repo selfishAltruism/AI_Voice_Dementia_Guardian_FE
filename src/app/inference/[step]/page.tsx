@@ -21,7 +21,7 @@ const Inference = ({
         {isReplay.current ? (
           <Recorder>
             <AudioPlayer
-              audioSrc="/recording.webm"
+              audioSrc="/sample.mp3"
               setPlaying={setPlaying}
               playing={playing}
               isReplay={isReplay}
@@ -29,7 +29,7 @@ const Inference = ({
           </Recorder>
         ) : (
           <AudioPlayer
-            audioSrc="/recording.webm"
+            audioSrc="/sample.mp3"
             setPlaying={setPlaying}
             playing={playing}
             isReplay={isReplay}

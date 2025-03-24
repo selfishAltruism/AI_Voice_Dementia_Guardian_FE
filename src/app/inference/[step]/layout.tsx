@@ -1,4 +1,4 @@
-import { InferenceHeader } from "@/entities/layout";
+import { InferenceHeader, LinkButton } from "@/entities/layout";
 
 const InferenceLayout = ({
   children,
@@ -13,6 +13,7 @@ const InferenceLayout = ({
     <>
       <InferenceHeader step={+step} />
       {children}
+      <LinkButton to={"/inference/" + (+step + 1)} back title="다음" />
     </>
   );
 };

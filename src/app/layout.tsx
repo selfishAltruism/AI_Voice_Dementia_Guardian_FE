@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Nanum_Gothic } from "next/font/google";
 import "./globals.css";
 
-import { Footer } from "@/entities/layout";
+import { Footer, ScreenGuard } from "@/entities/layout";
 
 const nanumGothic = Nanum_Gothic({
   subsets: ["latin"],
@@ -34,6 +34,7 @@ export default function RootLayout({
         />
       </head>
       <body className={nanumGothic.className}>
+        <ScreenGuard />
         <div className="flex min-h-screen flex-col">
           <main className="flex flex-grow flex-col items-center justify-center">
             {children}

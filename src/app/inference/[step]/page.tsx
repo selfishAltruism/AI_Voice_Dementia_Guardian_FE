@@ -19,7 +19,7 @@ const Inference = ({
       <div className="mb-2 mt-1 h-[7px] w-[770px] rounded-lg bg-gradient-to-r from-sub to-main bg-[length:200%_200%]" />
       <div className="mt-12 flex items-center gap-12">
         {isReplay.current ? (
-          <Recorder>
+          <Recorder isReplay={isReplay}>
             <AudioPlayer
               audioSrc="/sample.mp3"
               setPlaying={setPlaying}

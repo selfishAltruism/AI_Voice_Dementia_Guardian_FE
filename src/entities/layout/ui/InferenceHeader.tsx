@@ -22,7 +22,7 @@ const ProgressCircles: React.FC<ProgressCirclesProps> = ({ step }) => {
       {[...Array(11)].map((_, index) => (
         <div
           key={index}
-          className={`border-gray-400 h-6 w-6 rounded-full border-2 ${
+          className={`border-gray-400 h-6 w-6 rounded-full border ${
             index < step ? "bg-white" : ""
           }`}
         />

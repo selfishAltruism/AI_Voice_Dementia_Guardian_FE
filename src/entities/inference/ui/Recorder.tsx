@@ -1,8 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { convertToFlac } from "../utils";
+import { Button } from "@/entities/layout";
 
-export function Recorder({ children }: { children: React.ReactNode }) {
+export function Recorder({
+  children,
+  isReplay,
+}: {
+  children: React.ReactNode;
+  isReplay: React.RefObject<boolean>;
+}) {
   const [recording, setRecording] = useState(false);
+  const [isRerecord, setIsRerecord] = useState(false);
+
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [elapsedTime, setElapsedTime] = useState(0); // 경과 시간 상태 추가
   const mediaRecorder = useRef<MediaRecorder | null>(null);
@@ -67,7 +76,7 @@ export function Recorder({ children }: { children: React.ReactNode }) {
           try {
             // FLAC 형식으로 변환
             const flacBlob = await convertToFlac(audioFile);
-
+            setIsRerecord(true);
             // FLAC 변환 후, URL 생성
             setAudioUrl(URL.createObjectURL(flacBlob));
           } catch (error) {
@@ -148,20 +157,16 @@ export function Recorder({ children }: { children: React.ReactNode }) {
       ) : (
         <div className="mb-[105px] mt-[73px] h-[2px] w-[767px] rounded-md bg-white" />
       )}
-      <div className="flex items-center gap-12">
-        <p className="flex h-[90px] w-[252px] items-center justify-center rounded-md border border-white bg-white bg-gradient-to-r text-[54px] font-bold text-sub">
+      <div className="flex items-center gap-3">
+        <p className="mr-1 flex h-[90px] w-[244px] items-center justify-center rounded-md border border-white bg-white bg-gradient-to-r text-[54px] font-bold text-sub">
           {formatTime(elapsedTime)}
         </p>
-        <button
+        <Button
           onClick={() => setRecording(!recording)}
-          className={`flex h-[100px] w-[100px] items-center justify-center rounded-lg text-white transition`}
+          className="bg-opacity-0 text-white"
         >
-          {!recording ? (
-            <span className="icon-[fluent--record-24-regular] text-[100px]" />
-          ) : (
-            <span className="icon-[fluent--record-stop-32-regular] mr-[1px] text-[95px]" />
-          )}
-        </button>
+          {!recording ? (isRerecord ? "다시 녹음" : "녹음 시작") : "녹음 완료"}
+        </Button>
         {children}
       </div>
     </div>

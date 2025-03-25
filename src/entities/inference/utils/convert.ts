@@ -4,18 +4,18 @@ const ffmpeg = createFFmpeg({ log: true });
 
 export async function convertToFlac(file: File): Promise<Blob> {
   if (!ffmpeg.isLoaded()) {
-    await ffmpeg.load(); // FFmpeg.js 로드
+    await ffmpeg.load();
   }
 
-  // 파일을 가상 파일 시스템에 입력
-  ffmpeg.FS("writeFile", "input.webm", await fetchFile(file));
+  // FFmpeg 가상 파일 시스템에 입력 파일 저장
+  await ffmpeg.FS("writeFile", "input.webm", await fetchFile(file));
 
-  // 변환 실행 (webm → flac)
+  // FFmpeg를 사용하여 WebM을 FLAC으로 변환
   await ffmpeg.run("-i", "input.webm", "-c:a", "flac", "output.flac");
 
-  // 변환된 파일을 읽어와 SharedArrayBuffer 그대로 사용
+  // 변환된 FLAC 파일을 Uint8Array로 가져오기
   const flacData = ffmpeg.FS("readFile", "output.flac");
 
-  // SharedArrayBuffer를 Uint8Array로 변환 후 Blob 생성
-  return new Blob([new Uint8Array(flacData.buffer)], { type: "audio/flac" });
+  // Uint8Array를 Blob으로 변환
+  return new Blob([flacData], { type: "audio/flac" });
 }

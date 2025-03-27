@@ -7,6 +7,7 @@ import {
   InputNumber,
   InputSelect,
   InputContainer,
+  InputDate,
 } from "@/entities/layout";
 
 const PersonalInfo = () => {
@@ -14,6 +15,7 @@ const PersonalInfo = () => {
 
   return (
     <>
+      <div className="h-[52px]" />
       <h1>기본 인적 사항</h1>
       <div className="mb-2 mt-1 h-[7px] w-[300px] rounded-lg bg-gradient-to-r from-sub to-main bg-[length:200%_200%]"></div>
       <div className="mt-3 flex w-full flex-col items-center justify-center gap-8 md:flex-row">
@@ -21,7 +23,7 @@ const PersonalInfo = () => {
           <InputText
             label="이름"
             value={store.name}
-            placeholder={"이름"}
+            placeholder={"이름을 작성해주세요."}
             onChange={(value) => {
               store.setName(value);
             }}
@@ -30,7 +32,7 @@ const PersonalInfo = () => {
             label="성별"
             value={store.gender}
             options={[
-              { value: null, label: "선택" },
+              { value: null, label: "성별을 선택해주세요." },
               { value: "FEMALE", label: "여성" },
               { value: "MALE", label: "남성" },
             ]}
@@ -38,58 +40,82 @@ const PersonalInfo = () => {
               store.setGender(value);
             }}
           />
-          <InputContainer label="주민번호">
-            <div className="flex items-center gap-1">
-              <InputText
-                label=""
-                value={store.firstResidentNumber}
-                placeholder={"앞자리"}
-                onChange={(value) => {
-                  store.setFirstResidentNumber(value);
-                }}
-              />
-              -
-              <InputText
-                label=""
-                password
-                value={store.lastResidentNumber}
-                placeholder={"뒷자리"}
-                onChange={(value) => {
-                  store.setLastResidentNumber(value);
-                }}
-              />
-            </div>
-          </InputContainer>
         </div>
         <div className="flex w-1/5 flex-col gap-6">
-          <InputNumber
-            label="실제 나이"
-            value={store.realAge}
-            placeholder={"실제 나이"}
-            onChange={(value) => {
-              store.setRealAge(value);
-            }}
-          />
-          <InputNumber
-            label="등록 나이"
-            value={store.registerAge}
-            placeholder={"주민등록 상 나이"}
-            onChange={(value) => {
-              store.setRegisterAge(value);
-            }}
-          />
-          <InputText
-            label="생년월일(8자리)"
+          <InputDate
+            label="생년월일"
             value={store.birth}
             placeholder={"YYYYMMDD"}
             onChange={(value) => {
               store.setBirth(value);
             }}
           />
+          <InputSelect
+            label="최종 학력"
+            value={store.educationLevel}
+            options={[
+              { value: null, label: "최종 학격을 선택해주세요." },
+              { value: "NONE", label: "학력 없음" },
+              { value: "PRIMARY_SCHOOL", label: "초등학교 졸업" },
+              { value: "MIDDLE_SCHOOL", label: "중학교 졸업" },
+              { value: "HIGH_SCHOOL", label: "고등학교 졸업" },
+              { value: "BACHELOR", label: "학사 졸업" },
+              { value: "MASTER", label: "석사 졸업" },
+              { value: "DOCTORATE", label: "박사 졸업" },
+            ]}
+            onChange={(value) => {
+              store.setEducationLevel(value);
+            }}
+          />
         </div>
       </div>
 
-      <LinkButton title="검사 시작" to="/inference/1" back />
+      <div className="mt-6 w-[calc(40%+32px)]">
+        <InputContainer label="기존 인지기능 검사 결과">
+          {store.previousTestResults !== null ? (
+            <InputText
+              label=""
+              value={store.previousTestResults}
+              placeholder={"이전에 수행한 인지기능 검사 결과를 작성해주세요."}
+              onChange={(value) => {
+                store.setPreviousTestResults(value);
+              }}
+            />
+          ) : (
+            <div className="h-[52px]" />
+          )}
+          <div className="absolute right-0 top-[3px] flex items-center gap-2">
+            <div
+              onClick={() =>
+                store.previousTestResults !== null
+                  ? store.setPreviousTestResults(null)
+                  : store.setPreviousTestResults("")
+              }
+              className={`flex h-5 w-5 cursor-pointer items-center justify-center rounded-md border-2 ${
+                store.previousTestResults === null
+                  ? "bg-core bg-core"
+                  : "border-gray-300 bg-white"
+              }`}
+            >
+              <span className="icon-[tabler--check]"></span>
+            </div>
+            <p>해당 없음</p>
+          </div>
+        </InputContainer>
+      </div>
+
+      <LinkButton
+        title="검사 시작"
+        to="/inference/1"
+        back
+        disabled={
+          store.name === null &&
+          store.gender === null &&
+          store.birth === null &&
+          store.educationLevel === null
+        }
+        errorMessage="모든 정보를 입력해주세요."
+      />
     </>
   );
 };

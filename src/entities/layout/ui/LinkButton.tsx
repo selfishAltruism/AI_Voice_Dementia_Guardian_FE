@@ -2,17 +2,20 @@
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 export const LinkButton = ({
   to,
   back,
   title,
   disabled,
+  errorMessage,
 }: {
   to: string;
   back?: boolean;
   title: string;
   disabled?: boolean;
+  errorMessage?: string;
 }) => {
   const router = useRouter();
   return (
@@ -33,6 +36,9 @@ export const LinkButton = ({
       )}
       <Link
         href={disabled ? "#" : to}
+        onClick={() => {
+          if (disabled && errorMessage) toast.error(errorMessage);
+        }}
         className="border-whit rounded-md border bg-gradient-to-r from-sub to-main bg-[length:200%_200%] px-10 py-3 transition-all duration-500 hover:animate-gradient"
       >
         <strong>{title}</strong>

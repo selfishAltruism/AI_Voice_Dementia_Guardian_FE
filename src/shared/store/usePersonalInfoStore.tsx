@@ -39,13 +39,12 @@ export const usePersonalInfoStore = create<PersonalInfo>((set, get) => ({
     set(() => ({ previousTestResults })),
 
   isPersonalInfoComplete: () => {
-    const { name, gender, birth, educationLevel, previousTestResults } = get();
+    const { name, gender, birth, educationLevel } = get();
     return (
       name !== null &&
       gender !== null &&
       birth !== null &&
-      educationLevel !== null &&
-      previousTestResults !== null
+      educationLevel !== null
     );
   },
 }));

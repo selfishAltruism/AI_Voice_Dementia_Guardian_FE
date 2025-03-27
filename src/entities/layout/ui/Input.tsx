@@ -3,8 +3,8 @@
 import { ReactNode } from "react";
 
 const baseInputStyle =
-  "w-full p-2 border rounded-md shadow-sm focus:ring-2 focus:ring-white focus:outline-none placeholder-main";
-const labelStyle = "block text-lg font-medium text-gray-700 mb-1";
+  "text-black w-full p-2 border rounded-md shadow-sm focus:ring-2 focus:ring-white focus:outline-none";
+const labelStyle = "font-bold block text-2xl font-medium text-gray-700 mb-1";
 
 export const InputContainer = ({
   label,
@@ -13,7 +13,7 @@ export const InputContainer = ({
   label: string;
   children: ReactNode;
 }) => (
-  <div>
+  <div className="relative w-full">
     <label className={labelStyle + "mb-0"}>{label}</label>
     {children}
   </div>
@@ -68,7 +68,7 @@ export function InputSelect({ label, options, value, onChange }) {
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className={`${baseInputStyle} border-gray-300 h-[42px] bg-white text-main`}
+        className={`${baseInputStyle} border-gray-300 h-[50px] border-r-4 border-white bg-white text-main`}
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>
@@ -76,6 +76,31 @@ export function InputSelect({ label, options, value, onChange }) {
           </option>
         ))}
       </select>
+    </div>
+  );
+}
+
+export function InputDate({
+  label,
+  value,
+  onChange,
+  placeholder,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+}) {
+  return (
+    <div>
+      <label className={labelStyle}>{label}</label>
+      <input
+        type="date"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        className={`${baseInputStyle} border-gray-300 h-[50px] bg-white text-main`}
+      />
     </div>
   );
 }

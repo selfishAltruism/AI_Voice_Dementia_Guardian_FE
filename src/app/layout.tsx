@@ -3,6 +3,7 @@ import { Nanum_Gothic } from "next/font/google";
 import "./globals.css";
 
 import { Footer, ScreenGuard } from "@/entities/layout";
+import { Toaster } from "react-hot-toast";
 
 const nanumGothic = Nanum_Gothic({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
         />
       </head>
       <body className={nanumGothic.className}>
+        <Toaster position="bottom-left" reverseOrder={false} />
         <ScreenGuard />
         <div className="flex min-h-screen flex-col">
           <main className="flex flex-grow flex-col items-center justify-center">

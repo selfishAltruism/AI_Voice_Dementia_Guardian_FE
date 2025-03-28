@@ -1,7 +1,10 @@
 "use client";
 
 import { Recorder, AudioPlayer } from "@/entities/inference";
-import { useRef, useState } from "react";
+import { usePersonalInfoStore } from "@/shared/store";
+import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const Inference = ({
   params: { step },
@@ -12,6 +15,16 @@ const Inference = ({
 }) => {
   const [playing, setPlaying] = useState(false);
   const isReplay = useRef(false);
+  const isPersonalInfoComplete = usePersonalInfoStore(
+    (state) => state.isPersonalInfoComplete,
+  );
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isPersonalInfoComplete()) return;
+    toast.error("기본 인적 사항을 입력해주세요.");
+    router.replace("/personal-info");
+  }, []);
 
   return (
     <>

@@ -18,6 +18,7 @@ export const LinkButton = ({
   errorMessage?: string;
 }) => {
   const router = useRouter();
+
   return (
     <div className="fixed bottom-32 right-12 flex gap-2 text-2xl text-white">
       {back && (

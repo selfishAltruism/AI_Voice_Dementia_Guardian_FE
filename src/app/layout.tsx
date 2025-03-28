@@ -35,7 +35,7 @@ export default function RootLayout({
         />
       </head>
       <body className={nanumGothic.className}>
-        <Toaster position="bottom-left" reverseOrder={false} />
+        <Toaster position="top-right" reverseOrder={false} />
         <ScreenGuard />
         <div className="flex min-h-screen flex-col">
           <main className="flex flex-grow flex-col items-center justify-center">

@@ -1,10 +1,15 @@
 "use client";
 
-import { Recorder, AudioPlayer } from "@/entities/inference";
-import { usePersonalInfoStore } from "@/shared/store";
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+
+import { Recorder, AudioPlayer } from "@/entities/inference";
+import { postInference } from "@/entities/inference/api";
+import {
+  usePersonalInfoStore,
+  useInferenceInputDataStore,
+} from "@/shared/store";
 
 const Inference = ({
   params: { step },

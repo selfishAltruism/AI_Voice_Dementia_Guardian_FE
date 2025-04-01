@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import toast from "react-hot-toast";
 
 export const LinkButton = ({
@@ -10,12 +9,14 @@ export const LinkButton = ({
   title,
   disabled,
   errorMessage,
+  onBeforeNavigate,
 }: {
   to: string;
   back?: boolean;
   title: string;
   disabled?: boolean;
   errorMessage?: string;
+  onBeforeNavigate?: () => Promise<any>;
 }) => {
   const router = useRouter();
 
@@ -35,15 +36,19 @@ export const LinkButton = ({
           <span className="icon-[weui--back-filled]"></span>
         </button>
       )}
-      <Link
-        href={disabled ? "#" : to}
+      <button
         onClick={() => {
           if (disabled && errorMessage) toast.error(errorMessage);
+          if (onBeforeNavigate)
+            throw onBeforeNavigate().then(() => {
+              router.push(to);
+            });
+          else router.push(to);
         }}
         className="border-whit rounded-md border bg-gradient-to-r from-sub to-main bg-[length:200%_200%] px-10 py-3 transition-all duration-500 hover:animate-gradient"
       >
         <strong>{title}</strong>
-      </Link>
+      </button>
     </div>
   );
 };

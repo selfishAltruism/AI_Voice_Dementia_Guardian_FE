@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import { API } from "../configs";
 import { usePersonalInfoStore } from "../store";
 
@@ -17,7 +18,14 @@ export const useApi = () => {
     };
 
     try {
-      await API.post("signup", body);
+      const { data: res } = (await API.post(
+        "signup",
+        body,
+      )) as AxiosResponse<Res.SignUp>;
+
+      if (res.status !== "success") console.error(res.message);
+
+      return res.data.userId;
     } catch (e) {
       console.error(e);
     }

@@ -1,8 +1,9 @@
 "use client";
 
-import { LinkButton } from "@/entities/layout";
 import { usePersonalInfoStore } from "@/shared/store";
+import { useApi } from "@/shared/hooks";
 import {
+  LinkButton,
   InputText,
   InputNumber,
   InputSelect,
@@ -11,7 +12,21 @@ import {
 } from "@/entities/layout";
 
 const PersonalInfo = () => {
-  const store = usePersonalInfoStore();
+  // 모든 상태 사용하므로 구조분해할당 사용해도 무관
+  const {
+    name,
+    setName,
+    gender,
+    setGender,
+    birth,
+    setBirth,
+    educationLevel,
+    setEducationLevel,
+    previousTestResults,
+    setPreviousTestResults,
+  } = usePersonalInfoStore();
+
+  const { postUserInfo } = useApi();
 
   return (
     <>
@@ -22,37 +37,37 @@ const PersonalInfo = () => {
         <div className="flex w-1/5 flex-col gap-6">
           <InputText
             label="이름"
-            value={store.name}
+            value={name}
             placeholder={"이름을 작성해주세요."}
             onChange={(value) => {
-              store.setName(value);
+              setName(value);
             }}
           />
           <InputSelect
             label="성별"
-            value={store.gender}
+            value={gender}
             options={[
               { value: null, label: "성별을 선택해주세요." },
               { value: "FEMALE", label: "여성" },
               { value: "MALE", label: "남성" },
             ]}
             onChange={(value) => {
-              store.setGender(value);
+              setGender(value);
             }}
           />
         </div>
         <div className="flex w-1/5 flex-col gap-6">
           <InputDate
             label="생년월일"
-            value={store.birth}
+            value={birth}
             placeholder={"YYYYMMDD"}
             onChange={(value) => {
-              store.setBirth(value);
+              setBirth(value);
             }}
           />
           <InputSelect
             label="최종 학력"
-            value={store.educationLevel}
+            value={educationLevel}
             options={[
               { value: null, label: "최종 학격을 선택해주세요." },
               { value: "NONE", label: "학력 없음" },
@@ -64,7 +79,7 @@ const PersonalInfo = () => {
               { value: "DOCTORATE", label: "박사 졸업" },
             ]}
             onChange={(value) => {
-              store.setEducationLevel(value);
+              setEducationLevel(value);
             }}
           />
         </div>
@@ -72,13 +87,13 @@ const PersonalInfo = () => {
 
       <div className="mt-6 w-[calc(40%+32px)]">
         <InputContainer label="기존 인지기능 검사 결과">
-          {store.previousTestResults !== null ? (
+          {previousTestResults !== null ? (
             <InputText
               label=""
-              value={store.previousTestResults}
+              value={previousTestResults}
               placeholder={"이전에 수행한 인지기능 검사 결과를 작성해주세요."}
               onChange={(value) => {
-                store.setPreviousTestResults(value);
+                setPreviousTestResults(value);
               }}
             />
           ) : (
@@ -87,12 +102,12 @@ const PersonalInfo = () => {
           <div className="absolute right-0 top-[3px] flex items-center gap-2">
             <div
               onClick={() =>
-                store.previousTestResults !== null
-                  ? store.setPreviousTestResults(null)
-                  : store.setPreviousTestResults("")
+                previousTestResults !== null
+                  ? setPreviousTestResults(null)
+                  : setPreviousTestResults("")
               }
               className={`flex h-5 w-5 cursor-pointer items-center justify-center rounded-md border-2 ${
-                store.previousTestResults === null
+                previousTestResults === null
                   ? "bg-core bg-core"
                   : "border-gray-300 bg-white"
               }`}
@@ -104,15 +119,16 @@ const PersonalInfo = () => {
         </InputContainer>
       </div>
 
+      <button onClick={() => postUserInfo()}>TEST</button>
       <LinkButton
         title="검사 시작"
         to="/inference/1"
         back
         disabled={
-          store.name === null &&
-          store.gender === null &&
-          store.birth === null &&
-          store.educationLevel === null
+          name === null &&
+          gender === null &&
+          birth === null &&
+          educationLevel === null
         }
         errorMessage="모든 정보를 입력해주세요."
       />

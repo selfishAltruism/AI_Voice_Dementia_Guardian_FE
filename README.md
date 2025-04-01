@@ -12,8 +12,9 @@
 - State: Zustand, Zustand immer
 - API: Axios
 - File: ffmpeg
+- UI: Three.js, Tailwind CSS
 
-### FSD 아키텍처 기반 폴더 구조
+### FSD Architecture
 
 - Next.js app 폴더 구조 적용으로 page, app 통합
 - 프로젝트 규모가 크지 않으므로, widget 생략

@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 import { Recorder, AudioPlayer } from "@/entities/inference";
-import { postInference } from "@/entities/inference/api";
 import {
   usePersonalInfoStore,
   useInferenceInputDataStore,

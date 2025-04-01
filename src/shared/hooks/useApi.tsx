@@ -1,16 +1,17 @@
 import { AxiosResponse } from "axios";
 import { API } from "../configs";
-import { usePersonalInfoStore } from "../store";
+import { usePersonalInfoStore, useInferenceInputDataStore } from "../store";
 
 export const useApi = () => {
   const personalInfoStore = usePersonalInfoStore();
+  const inferenceInputDataStore = useInferenceInputDataStore();
 
   const postUserInfo = async () => {
     const body = {
       // TODO: 상태 반영 필요
       userInfoAgree: true,
       userName: personalInfoStore.name,
-      useDateOfBirth: personalInfoStore.birth,
+      userDateOfBirth: personalInfoStore.birth,
       // TODO: string 변경 필요
       userGender: personalInfoStore.gender === "MALE",
       userEdu: personalInfoStore.educationLevel,
@@ -25,7 +26,7 @@ export const useApi = () => {
 
       if (res.status !== "success") console.error(res.message);
 
-      return res.data.userId;
+      inferenceInputDataStore.setUserId(res.data.userId);
     } catch (e) {
       console.error(e);
     }

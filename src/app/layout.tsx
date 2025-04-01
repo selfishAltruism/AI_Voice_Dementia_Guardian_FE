@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { Nanum_Gothic } from "next/font/google";
+import "./globals.css";
+
+import { Footer, ScreenGuard } from "@/entities/layout";
+import { Toaster } from "react-hot-toast";
 
 const nanumGothic = Nanum_Gothic({
   subsets: ["latin"],
@@ -20,14 +23,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+      </head>
       <body className={nanumGothic.className}>
-        <div className="min-h-screen flex flex-col">
-          <main className="flex-grow flex flex-col justify-center items-center">
+        <Toaster position="top-right" reverseOrder={false} />
+        <ScreenGuard />
+        <div className="flex min-h-screen flex-col">
+          <main className="flex flex-grow flex-col items-center justify-center">
             {children}
           </main>
-          <footer className="bg-[#000000] text-white text-center p-4 text-sm">
-            <p>&copy; 2025 My Website. All rights reserved.</p>
-          </footer>
+          <Footer />
         </div>
       </body>
     </html>

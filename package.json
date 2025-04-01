@@ -9,12 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ffmpeg/core": "^0.9.0",
+    "@ffmpeg/ffmpeg": "^0.9.8",
+    "@ffmpeg/util": "^0.12.2",
+    "axios": "^1.8.4",
+    "immer": "^10.1.1",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "three": "^0.174.0"
+    "react-hot-toast": "^2.5.2",
+    "react-spinners": "^0.15.0",
+    "three": "^0.174.0",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@iconify/json": "^2.2.317",
+    "@iconify/tailwind": "^1.2.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

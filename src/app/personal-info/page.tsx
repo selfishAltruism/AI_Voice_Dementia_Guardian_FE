@@ -9,6 +9,7 @@ import {
   InputSelect,
   InputContainer,
   InputDate,
+  Checkbox,
 } from "@/entities/layout";
 
 const PersonalInfo = () => {
@@ -31,10 +32,14 @@ const PersonalInfo = () => {
   return (
     <>
       <div className="h-[52px]" />
-      <h1>기본 인적 사항</h1>
-      <div className="mb-2 mt-1 h-[7px] w-[300px] rounded-lg bg-gradient-to-r from-sub to-main bg-[length:200%_200%]"></div>
+      <h1 className="w-[700px]">
+        정확한 진단을 위해
+        <br />
+        아래 정보를 입력해주세요.
+      </h1>
+      <div className="mb-2 mt-1 h-[7px] w-[700px] rounded-lg bg-gradient-to-r from-sub to-main bg-[length:200%_200%]"></div>
       <div className="mt-3 flex w-full flex-col items-center justify-center gap-8 md:flex-row">
-        <div className="flex w-1/5 flex-col gap-6">
+        <div className="flex w-[335px] flex-col gap-6">
           <InputText
             label="이름"
             value={name}
@@ -56,7 +61,7 @@ const PersonalInfo = () => {
             }}
           />
         </div>
-        <div className="flex w-1/5 flex-col gap-6">
+        <div className="flex w-[335px] flex-col gap-6">
           <InputDate
             label="생년월일"
             value={birth}
@@ -85,7 +90,7 @@ const PersonalInfo = () => {
         </div>
       </div>
 
-      <div className="mt-6 w-[calc(40%+32px)]">
+      <div className="mt-6 w-[700px]">
         <InputContainer label="혹시 이전에 비슷한 검사를 받으신 적 있으신가요?">
           {previousTestResults !== null ? (
             <InputSelect
@@ -106,7 +111,6 @@ const PersonalInfo = () => {
                   value: "치매 진단을 받은 적 있어요.",
                   label: "치매 진단을 받은 적 있어요.",
                 },
-                s,
               ]}
               onChange={(value) => {
                 setPreviousTestResults(value);
@@ -115,23 +119,15 @@ const PersonalInfo = () => {
           ) : (
             <div className="h-[52px]" />
           )}
-          <div className="absolute right-0 top-[3px] flex items-center gap-2">
-            <div
-              onClick={() =>
-                previousTestResults !== null
-                  ? setPreviousTestResults(null)
-                  : setPreviousTestResults("")
-              }
-              className={`flex h-5 w-5 cursor-pointer items-center justify-center rounded-md border-2 ${
-                previousTestResults === null
-                  ? "bg-core bg-core"
-                  : "border-gray-300 bg-white"
-              }`}
-            >
-              <span className="icon-[tabler--check]"></span>
-            </div>
-            <p>해당 없음</p>
-          </div>
+          <Checkbox
+            onClick={() =>
+              previousTestResults !== null
+                ? setPreviousTestResults(null)
+                : setPreviousTestResults("")
+            }
+            label="해당 없음"
+            checked={previousTestResults === null}
+          />
         </InputContainer>
       </div>
 

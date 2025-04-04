@@ -38,7 +38,10 @@ export const LinkButton = ({
       )}
       <button
         onClick={() => {
-          if (disabled && errorMessage) toast.error(errorMessage);
+          if (disabled && errorMessage) {
+            toast.error(errorMessage);
+            return;
+          }
           if (onBeforeNavigate)
             throw onBeforeNavigate().then(() => {
               router.push(to);

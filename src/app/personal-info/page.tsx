@@ -86,12 +86,28 @@ const PersonalInfo = () => {
       </div>
 
       <div className="mt-6 w-[calc(40%+32px)]">
-        <InputContainer label="기존 인지기능 검사 결과">
+        <InputContainer label="혹시 이전에 비슷한 검사를 받으신 적 있으신가요?">
           {previousTestResults !== null ? (
-            <InputText
+            <InputSelect
               label=""
               value={previousTestResults}
-              placeholder={"이전에 수행한 인지기능 검사 결과를 작성해주세요."}
+              options={[
+                { value: null, label: "이전 검사 결과를 선택해주세요." },
+                { value: "잘 모르겠어요.", label: "잘 모르겠어요." },
+                {
+                  value: "조금 걱정된다고 들은 적 있어요.",
+                  label: "조금 걱정된다고 들은 적 있어요.",
+                },
+                {
+                  value: "경도인지장애 진단을 받은 적 있어요.",
+                  label: "경도인지장애 진단을 받은 적 있어요.",
+                },
+                {
+                  value: "치매 진단을 받은 적 있어요.",
+                  label: "치매 진단을 받은 적 있어요.",
+                },
+                s,
+              ]}
               onChange={(value) => {
                 setPreviousTestResults(value);
               }}

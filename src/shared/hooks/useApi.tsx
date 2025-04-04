@@ -8,12 +8,10 @@ export const useApi = () => {
 
   const postUserInfo = async () => {
     const body = {
-      // TODO: 상태 반영 필요
       userInfoAgree: true,
       userName: personalInfoStore.name,
       userDateOfBirth: personalInfoStore.birth,
-      // TODO: string 변경 필요
-      userGender: personalInfoStore.gender === "MALE",
+      userGender: personalInfoStore.gender,
       userEdu: personalInfoStore.educationLevel,
       userPreResult: personalInfoStore.previousTestResults,
     };

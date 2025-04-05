@@ -8,7 +8,7 @@ export const useApi = () => {
 
   const postUserInfo = async () => {
     const body = {
-      userInfoAgree: true,
+      userInfoAgree: personalInfoStore.agreeThirdPartyConsent,
       userName: personalInfoStore.name,
       userDateOfBirth: personalInfoStore.birth,
       userGender: personalInfoStore.gender,

@@ -15,6 +15,7 @@ import {
 const PersonalInfo = () => {
   // 모든 상태 사용하므로 구조분해할당 사용해도 무관
   const {
+    agreeThirdPartyConsent,
     name,
     setName,
     gender,

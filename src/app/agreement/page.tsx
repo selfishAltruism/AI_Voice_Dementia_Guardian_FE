@@ -3,21 +3,18 @@
 import { LinkButton } from "@/entities/layout";
 import { useState } from "react";
 import { Checkbox } from "@/entities/layout";
+import { usePersonalInfoStore } from "@/shared/store";
 
 const Agreement = () => {
   const [personalInfoAgree, setPersonalInfoAgree] = useState<boolean>(false);
-  const [agree2, setAgree2] = useState<boolean>(false);
 
-  /* () => {
-    setPersonalInfoAgree(false);
-    setAgree2(false);
-  };
+  const agreeThirdPartyConsent = usePersonalInfoStore(
+    (state) => state.agreeThirdPartyConsent,
+  );
 
-  () => {
-    setPersonalInfoAgree(true);
-    setAgree2(true);
-  };
-  */
+  const setAgreeThirdPartyConsent = usePersonalInfoStore(
+    (state) => state.setAgreeThirdPartyConsent,
+  );
 
   return (
     <>
@@ -113,9 +110,9 @@ const Agreement = () => {
         </div>
         <div className="relative h-12 w-full text-white">
           <Checkbox
-            onClick={() => setAgree2(!agree2)}
+            onClick={() => setAgreeThirdPartyConsent(!agreeThirdPartyConsent)}
             label="동의합니다."
-            checked={agree2}
+            checked={agreeThirdPartyConsent}
           />
         </div>
       </main>

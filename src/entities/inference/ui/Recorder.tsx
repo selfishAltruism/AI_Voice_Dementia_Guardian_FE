@@ -149,16 +149,16 @@ export function Recorder({
       {recording ? (
         <canvas
           ref={canvasRef}
-          width={767}
+          width={740}
           height={150}
           className="rounded"
           style={{ backgroundColor: "transparent", marginBottom: "30px" }}
         />
       ) : (
-        <div className="mb-[105px] mt-[73px] h-[2px] w-[767px] rounded-md bg-white" />
+        <div className="mb-[105px] mt-[73px] h-[2px] w-[750px] rounded-md bg-white" />
       )}
       <div className="flex items-center gap-3">
-        <p className="mr-1 flex h-[90px] w-[244px] items-center justify-center rounded-md border border-white bg-white bg-gradient-to-r text-[54px] font-bold text-sub">
+        <p className="ml-[9px] mr-[9px] flex h-[74px] w-[235px] items-center justify-center rounded-md border border-white bg-white bg-gradient-to-r text-[45px] font-bold text-sub">
           {formatTime(elapsedTime)}
         </p>
         <Button

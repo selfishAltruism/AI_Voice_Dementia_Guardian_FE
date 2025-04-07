@@ -1,6 +1,12 @@
 import { create } from "zustand";
 
 interface PersonalInfo {
+  agreePersonalInfo: boolean;
+  setAgreePersonalInfo: (agree: boolean) => void;
+
+  agreeThirdPartyConsent: boolean;
+  setAgreeThirdPartyConsent: (agree: boolean) => void;
+
   // 기본 정보
   name: string | null;
   setName: (name: string | null) => void;
@@ -21,6 +27,14 @@ interface PersonalInfo {
 }
 
 export const usePersonalInfoStore = create<PersonalInfo>((set, get) => ({
+  agreePersonalInfo: false,
+  setAgreePersonalInfo: (agreePersonalInfo) =>
+    set(() => ({ agreePersonalInfo })),
+
+  agreeThirdPartyConsent: false,
+  setAgreeThirdPartyConsent: (agreeThirdPartyConsent) =>
+    set(() => ({ agreeThirdPartyConsent })),
+
   // 기본 정보
   name: null,
   setName: (name: string) => set(() => ({ name })),

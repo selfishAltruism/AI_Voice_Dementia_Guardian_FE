@@ -9,7 +9,7 @@ body {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 45px;
   font-weight: bolder;
 }
 
@@ -21,4 +21,8 @@ h2 {
 h3 {
   font-size: 25px;
   font-weight: bolder;
+
+  span {
+    color: #ff4141;
+  }
 }

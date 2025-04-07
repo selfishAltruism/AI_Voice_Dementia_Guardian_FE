@@ -36,7 +36,7 @@ export default function Home() {
           👉 하단 시작 버튼을 통해 인지 건강을 손쉽게 확인하세요!
         </p>
       </div>
-      <LinkButton title="AI 음성 치매 검사 시작" to="/personal-info" />
+      <LinkButton title="AI 음성 치매 검사 시작" to="/agreement" />
     </div>
   );
 }

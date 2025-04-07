@@ -21,7 +21,7 @@ export const LinkButton = ({
   const router = useRouter();
 
   return (
-    <div className="fixed bottom-32 right-12 flex gap-2 text-2xl text-white">
+    <div className="fixed bottom-[86px] right-[17px] flex gap-2 text-2xl text-white">
       {back && (
         <button
           onClick={() => {

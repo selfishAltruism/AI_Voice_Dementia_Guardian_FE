@@ -31,7 +31,9 @@ export const ImgSession = ({
         {isStart ? (
           <Recorder />
         ) : (
-          <Button onClick={() => setIsStart(true)}>시작</Button>
+          <div className="w-[750px]">
+            <Button onClick={() => setIsStart(true)}>시작</Button>
+          </div>
         )}
       </div>
     </>

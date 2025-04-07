@@ -29,12 +29,14 @@ export const AudioSession = ({
             />
           </Recorder>
         ) : (
-          <AudioPlayer
-            audioSrc={inferenceExample[inferenceExampleIds].ref}
-            setPlaying={setPlaying}
-            playing={playing}
-            isReplay={isReplay}
-          />
+          <div className="mr-24 w-[750px]">
+            <AudioPlayer
+              audioSrc={inferenceExample[inferenceExampleIds].ref}
+              setPlaying={setPlaying}
+              playing={playing}
+              isReplay={isReplay}
+            />
+          </div>
         )}
       </div>
     </>

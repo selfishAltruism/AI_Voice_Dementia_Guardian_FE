@@ -25,15 +25,13 @@ export const useApi = () => {
       if (res.status !== "success") console.error(res.message);
 
       inferenceInputDataStore.setUserId(res.data.userId);
-
-      handleDummyUpload(res.data.userId + "");
     } catch (e) {
       console.error(e);
     }
   };
 
+  //TODO: 테스트 코드
   const handleDummyUpload = async (userId: string) => {
-    //TODO: 테스트 코드
     const formData = new FormData();
 
     console.log(userId);

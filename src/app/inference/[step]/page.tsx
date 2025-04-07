@@ -23,9 +23,6 @@ const Inference = ({
     (state) => state.isPersonalInfoComplete,
   );
 
-  // const userId = useInferenceInputDataStore((state) => state.userId);
-  // console.log(userId);
-
   const router = useRouter();
 
   useEffect(() => {

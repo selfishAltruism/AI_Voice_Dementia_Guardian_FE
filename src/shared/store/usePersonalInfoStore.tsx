@@ -1,6 +1,9 @@
 import { create } from "zustand";
 
 interface PersonalInfo {
+  agreePersonalInfo: boolean;
+  setAgreePersonalInfo: (agree: boolean) => void;
+
   agreeThirdPartyConsent: boolean;
   setAgreeThirdPartyConsent: (agree: boolean) => void;
 
@@ -24,6 +27,10 @@ interface PersonalInfo {
 }
 
 export const usePersonalInfoStore = create<PersonalInfo>((set, get) => ({
+  agreePersonalInfo: false,
+  setAgreePersonalInfo: (agreePersonalInfo) =>
+    set(() => ({ agreePersonalInfo })),
+
   agreeThirdPartyConsent: false,
   setAgreeThirdPartyConsent: (agreeThirdPartyConsent) =>
     set(() => ({ agreeThirdPartyConsent })),

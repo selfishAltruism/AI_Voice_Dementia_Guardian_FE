@@ -6,7 +6,13 @@ import { Checkbox } from "@/entities/layout";
 import { usePersonalInfoStore } from "@/shared/store";
 
 const Agreement = () => {
-  const [personalInfoAgree, setPersonalInfoAgree] = useState<boolean>(false);
+  const agreePersonalInfo = usePersonalInfoStore(
+    (state) => state.agreePersonalInfo,
+  );
+
+  const setAgreePersonalInfo = usePersonalInfoStore(
+    (state) => state.setAgreePersonalInfo,
+  );
 
   const agreeThirdPartyConsent = usePersonalInfoStore(
     (state) => state.agreeThirdPartyConsent,
@@ -67,9 +73,9 @@ const Agreement = () => {
 
         <div className="relative h-12 w-full text-white">
           <Checkbox
-            onClick={() => setPersonalInfoAgree(!personalInfoAgree)}
+            onClick={() => setAgreePersonalInfo(!agreePersonalInfo)}
             label="동의합니다."
-            checked={personalInfoAgree}
+            checked={agreePersonalInfo}
           />
         </div>
 
@@ -120,7 +126,7 @@ const Agreement = () => {
         back
         title="다음"
         to="/personal-info"
-        disabled={!personalInfoAgree}
+        disabled={!agreePersonalInfo}
         errorMessage="필수 사항을 동의해주세요."
       />
     </>

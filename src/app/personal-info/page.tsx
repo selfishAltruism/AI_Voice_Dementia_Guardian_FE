@@ -1,5 +1,8 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+
 import { usePersonalInfoStore } from "@/shared/store";
 import { useApi } from "@/shared/hooks";
 import {
@@ -11,11 +14,12 @@ import {
   InputDate,
   Checkbox,
 } from "@/entities/layout";
+import { useEffect } from "react";
 
 const PersonalInfo = () => {
   // 모든 상태 사용하므로 구조분해할당 사용해도 무관
   const {
-    agreeThirdPartyConsent,
+    agreePersonalInfo,
     name,
     setName,
     gender,
@@ -27,6 +31,14 @@ const PersonalInfo = () => {
     previousTestResults,
     setPreviousTestResults,
   } = usePersonalInfoStore();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (agreePersonalInfo) return;
+    toast.error("아래 사항을 동의해주세요.");
+    router.replace("/agreement");
+  }, []);
 
   const { postUserInfo } = useApi();
 

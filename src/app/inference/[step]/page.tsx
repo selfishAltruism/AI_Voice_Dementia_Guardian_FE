@@ -1,16 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-
-import { Recorder, AudioPlayer } from "@/entities/inference";
-import {
-  usePersonalInfoStore,
-  useInferenceInputDataStore,
-} from "@/shared/store";
-
 import { inferenceExample } from "@/shared";
+import { AudioSession, ImgSession } from "@/widgets/inference";
 
 const Inference = ({
   params: { step },
@@ -19,12 +11,6 @@ const Inference = ({
     step: string;
   };
 }) => {
-  const [playing, setPlaying] = useState(false);
-  const isReplay = useRef(false);
-  const isPersonalInfoComplete = usePersonalInfoStore(
-    (state) => state.isPersonalInfoComplete,
-  );
-
   const router = useRouter();
 
   /* useEffect(() => {
@@ -33,29 +19,15 @@ const Inference = ({
     router.replace("/personal-info");
   }, []);
  */
+
   return (
     <>
-      <h1 className="mt-20 w-[750px]">{inferenceExample[+step].child}</h1>
-      <div className="mb-2 mt-1 h-[7px] w-[750px] rounded-lg bg-gradient-to-r from-sub to-main bg-[length:200%_200%]" />
-      <div className="mt-12 flex items-center gap-12">
-        {isReplay.current ? (
-          <Recorder isReplay={isReplay}>
-            <AudioPlayer
-              audioSrc="/sample.mp3"
-              setPlaying={setPlaying}
-              playing={playing}
-              isReplay={isReplay}
-            />
-          </Recorder>
-        ) : (
-          <AudioPlayer
-            audioSrc="/sample.mp3"
-            setPlaying={setPlaying}
-            playing={playing}
-            isReplay={isReplay}
-          />
-        )}
-      </div>
+      {inferenceExample[+step].type === "AUDIO" && (
+        <AudioSession inferenceExampleIds={+step} />
+      )}
+      {inferenceExample[+step].type === "IMG" && (
+        <ImgSession inferenceExampleIds={+step} />
+      )}
     </>
   );
 };

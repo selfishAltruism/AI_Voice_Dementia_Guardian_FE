@@ -15,7 +15,7 @@ export const inferenceHeaderTitle = [
 ];
 
 function pickRandom(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+  return "/inference-ref" + arr[Math.floor(Math.random() * arr.length)];
 }
 
 export const inferenceExample = [

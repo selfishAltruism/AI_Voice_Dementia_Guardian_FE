@@ -2,13 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { convertToFlac } from "../utils";
 import { Button } from "@/entities/layout";
 
-export function Recorder({
-  children,
-  isReplay,
-}: {
-  children: React.ReactNode;
-  isReplay: React.RefObject<boolean>;
-}) {
+export function Recorder({ children }: { children?: React.ReactNode }) {
   const [recording, setRecording] = useState(false);
   const [isRerecord, setIsRerecord] = useState(false);
 

@@ -14,13 +14,11 @@ export const inferenceHeaderTitle = [
   ["완료", "AI 음성 치매 지킴이"],
 ];
 
-//TODO 테스트 음성 추가 필요
-
 function pickRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-export const inferenceMainTitle = [
+export const inferenceExample = [
   ,
   {
     type: "AUDIO",
@@ -30,7 +28,7 @@ export const inferenceMainTitle = [
         따라 말해주세요.
       </>
     ),
-    ref: pickRandom(["/"]),
+    ref: pickRandom(["/1.MP3"]),
   },
   {
     type: "AUDIO",
@@ -40,7 +38,7 @@ export const inferenceMainTitle = [
         따라 말해주세요.
       </>
     ),
-    ref: pickRandom(["/"]),
+    ref: pickRandom(["/2.MP3"]),
   },
   {
     type: "AUDIO",
@@ -50,7 +48,7 @@ export const inferenceMainTitle = [
         따라 말해주세요.
       </>
     ),
-    ref: pickRandom(["/"]),
+    ref: pickRandom(["/3.MP3"]),
   },
   {
     type: "IMG",

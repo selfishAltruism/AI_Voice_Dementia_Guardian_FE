@@ -10,7 +10,7 @@ import {
   useInferenceInputDataStore,
 } from "@/shared/store";
 
-import { inferenceMainTitle } from "@/shared";
+import { inferenceExample } from "@/shared";
 
 const Inference = ({
   params: { step },
@@ -35,7 +35,7 @@ const Inference = ({
  */
   return (
     <>
-      <h1 className="mt-20 w-[750px]">{inferenceMainTitle[+step].child}</h1>
+      <h1 className="mt-20 w-[750px]">{inferenceExample[+step].child}</h1>
       <div className="mb-2 mt-1 h-[7px] w-[750px] rounded-lg bg-gradient-to-r from-sub to-main bg-[length:200%_200%]" />
       <div className="mt-12 flex items-center gap-12">
         {isReplay.current ? (

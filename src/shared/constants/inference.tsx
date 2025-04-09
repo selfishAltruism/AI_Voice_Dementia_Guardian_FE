@@ -15,7 +15,7 @@ export const inferenceHeaderTitle = [
 ];
 
 function pickRandom(arr) {
-  return "/inference-ref" + arr[Math.floor(Math.random() * arr.length)];
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 export const inferenceExample = [
@@ -28,7 +28,7 @@ export const inferenceExample = [
         따라 말해주세요.
       </>
     ),
-    ref: pickRandom(["/1.MP3"]),
+    ref: "/inference-ref" + pickRandom(["/1.MP3"]),
   },
   {
     type: "AUDIO",
@@ -38,7 +38,7 @@ export const inferenceExample = [
         따라 말해주세요.
       </>
     ),
-    ref: pickRandom(["/2.MP3"]),
+    ref: "/inference-ref" + pickRandom(["/2.MP3"]),
   },
   {
     type: "AUDIO",
@@ -48,7 +48,7 @@ export const inferenceExample = [
         따라 말해주세요.
       </>
     ),
-    ref: pickRandom(["/3.MP3"]),
+    ref: "/inference-ref" + pickRandom(["/3.MP3"]),
   },
   {
     type: "IMG",
@@ -58,18 +58,20 @@ export const inferenceExample = [
         이름을 말해주세요.
       </>
     ),
-    ref: pickRandom([
-      "/4/1.jpg",
-      "/4/2.jpg",
-      "/4/3.jpg",
-      "/4/4.jpg",
-      "/4/5.jpg",
-      "/4/6.jpg",
-      "/4/7.jpg",
-      "/4/8.jpg",
-      "/4/9.jpg",
-      "/4/10.jpg",
-    ]),
+    ref:
+      "/inference-ref" +
+      pickRandom([
+        "/4/1.jpg",
+        "/4/2.jpg",
+        "/4/3.jpg",
+        "/4/4.jpg",
+        "/4/5.jpg",
+        "/4/6.jpg",
+        "/4/7.jpg",
+        "/4/8.jpg",
+        "/4/9.jpg",
+        "/4/10.jpg",
+      ]),
   },
   {
     type: "IMG",
@@ -79,20 +81,25 @@ export const inferenceExample = [
         이름을 말해주세요.
       </>
     ),
-    ref: pickRandom([
-      "/5/1.jpg",
-      "/5/2.jpg",
-      "/5/3.jpg",
-      "/5/4.jpg",
-      "/5/5.jpg",
-      "/5/6.jpg",
-    ]),
+    ref:
+      "/inference-ref" +
+      pickRandom([
+        "/5/1.jpg",
+        "/5/2.jpg",
+        "/5/3.jpg",
+        "/5/4.jpg",
+        "/5/5.jpg",
+        "/5/6.jpg",
+      ]),
   },
   {
     type: "TEXT",
     child: (
       <>
-        {pickRandom(["ㄱ", "ㄴ", "ㄷ", "ㅁ", "ㅂ"])} 으로 시작하는 단어를
+        <span className="text-[50px]">
+          "{pickRandom(["ㄱ", "ㄴ", "ㄷ", "ㅁ", "ㅂ"])}"
+        </span>{" "}
+        으로 시작하는 단어를
         <br />
         최대한 많이 말해주세요.
       </>

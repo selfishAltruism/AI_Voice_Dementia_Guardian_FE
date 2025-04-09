@@ -2,7 +2,12 @@
 
 import { useRouter } from "next/navigation";
 import { inferenceExample } from "@/shared";
-import { AudioSession, ImgSession } from "@/widgets/inference";
+import {
+  AudioSession,
+  ImgSession,
+  TextSession,
+  MathSession,
+} from "@/widgets/inference";
 
 const Inference = ({
   params: { step },
@@ -27,6 +32,12 @@ const Inference = ({
       )}
       {inferenceExample[+step].type === "IMG" && (
         <ImgSession inferenceExampleIds={+step} />
+      )}
+      {inferenceExample[+step].type === "TEXT" && (
+        <TextSession inferenceExampleIds={+step} />
+      )}
+      {inferenceExample[+step].type === "MATH" && (
+        <MathSession inferenceExampleIds={+step} />
       )}
     </>
   );

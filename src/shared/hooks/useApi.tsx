@@ -31,32 +31,30 @@ export const useApi = () => {
   };
 
   //TODO: 테스트 코드
-  const handleDummyUpload = async (userId: string) => {
+  const handleDummyUpload = async () => {
     const formData = new FormData();
 
-    console.log(userId);
-    formData.append("userId", "" + userId);
+    formData.append("userId", "" + inferenceInputDataStore.userId);
 
-    // 더미 WAV 헤더 생성 (RIFF....WAVE 시그니처 일부)
-    const wavHeader = new Uint8Array([
-      0x52, 0x49, 0x46, 0x46, 0x00, 0x00, 0x00, 0x00, 0x57, 0x41, 0x56, 0x45,
-    ]);
-    const blob = new Blob([wavHeader], { type: "audio/wav" });
+    // public 디렉토리의 test.wav 파일을 fetch
+    const response = await fetch("/test.wav");
+    const blob = await response.blob();
 
-    // 파일 11개 추가
+    // File 객체로 변환
+    const file = new File([blob], "test.wav", { type: "audio/wav" });
+
+    // 동일 파일 여러 개 첨부
     for (let i = 0; i < 11; i++) {
-      const file = new File([blob], `test${(i % 3) + 1}.wav`, {
-        type: "audio/wav",
-      });
       formData.append("files", file);
     }
 
+    // 디버깅용 FormData 확인
+    for (let pair of formData.entries()) {
+      console.log(pair[0], pair[1]);
+    }
+
     try {
-      const res = await API.post("/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const res = await FORMAPI.post("/upload", formData);
 
       console.log("Success:", res.data);
     } catch (err) {
@@ -64,5 +62,5 @@ export const useApi = () => {
     }
   };
 
-  return { postUserInfo };
+  return { postUserInfo, handleDummyUpload };
 };

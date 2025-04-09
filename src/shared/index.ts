@@ -1,1 +1,1 @@
-export * from "./constants/inferenceTitles";
+export * from "./constants/inference";

@@ -48,7 +48,7 @@ export function AudioPlayer({
   return (
     <div className="flex w-64 justify-center">
       {playing ? (
-        <BounceLoader color="white" className="mb-3 mt-4" />
+        <BounceLoader color="white" className="mb-3 mt-[2px]" />
       ) : (
         <Button onClick={togglePlay}>
           {isReplay.current ? "다시 듣기" : "시작"}

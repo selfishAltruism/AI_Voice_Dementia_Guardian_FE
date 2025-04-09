@@ -2,7 +2,7 @@ import { inferenceHeaderTitle } from "@/shared";
 
 export const InferenceHeader = ({ step }: { step: number }) => {
   return (
-    <header className="fixed top-0 flex w-full items-center justify-between px-12 py-10">
+    <header className="fixed top-0 flex w-full justify-between px-[18px] py-3">
       <div>
         <h2>{inferenceHeaderTitle[step][0]}</h2>
         <h3>{inferenceHeaderTitle[step][1]}</h3>
@@ -18,7 +18,7 @@ interface ProgressCirclesProps {
 
 const ProgressCircles: React.FC<ProgressCirclesProps> = ({ step }) => {
   return (
-    <div className="flex gap-4">
+    <div className="mt-2 flex gap-3">
       {[...Array(11)].map((_, index) => (
         <div
           key={index}

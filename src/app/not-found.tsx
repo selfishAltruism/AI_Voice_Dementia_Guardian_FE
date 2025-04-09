@@ -8,7 +8,7 @@ export default function Home() {
     <div className="flex gap-8">
       <div className="flex items-center gap-2">
         <h1>AI</h1>
-        <div className="max-w-[60px]">
+        <div className="mb-2 max-w-[60px]">
           <AILoading small />
         </div>
         <h1>치매 지킴이</h1>

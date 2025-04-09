@@ -165,9 +165,9 @@ export const inferenceExample = [
     type: "RESULT",
     child: (
       <>
-        모두 완료했습니다!
+        모두 완료했습니다.
         <br />
-        AI가 주신 데이터를 토대로 분석 중 입니다.
+        AI가 데이터를 토대로 분석 중 입니다.
       </>
     ),
     ref: null,

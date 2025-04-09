@@ -24,18 +24,17 @@ export const useApi = () => {
 
       if (res.status !== "success") console.error(res.message);
 
-      handleDummyUpload("" + res.data.userId);
+      inferenceInputDataStore.setUserId(res.data.userId);
     } catch (e) {
       console.error(e);
     }
   };
 
   //TODO: 테스트 코드
-  const handleDummyUpload = async (userId: string) => {
+  const handleDummyUpload = async () => {
     const formData = new FormData();
 
-    console.log(userId);
-    formData.append("userId", userId);
+    formData.append("userId", "" + inferenceInputDataStore.userId);
 
     // public 디렉토리의 test.wav 파일을 fetch
     const response = await fetch("/test.wav");
@@ -63,5 +62,5 @@ export const useApi = () => {
     }
   };
 
-  return { postUserInfo };
+  return { postUserInfo, handleDummyUpload };
 };

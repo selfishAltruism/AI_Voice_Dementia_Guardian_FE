@@ -7,6 +7,7 @@ import {
   ImgSession,
   TextSession,
   MathSession,
+  ResultSession,
 } from "@/widgets/inference";
 
 const Inference = ({
@@ -38,6 +39,9 @@ const Inference = ({
       )}
       {inferenceExample[+step].type === "MATH" && (
         <MathSession inferenceExampleIds={+step} />
+      )}
+      {inferenceExample[+step].type === "RESULT" && (
+        <ResultSession inferenceExampleIds={+step} />
       )}
     </>
   );

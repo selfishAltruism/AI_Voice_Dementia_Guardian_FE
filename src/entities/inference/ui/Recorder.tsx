@@ -161,7 +161,7 @@ export function Recorder({ children }: { children?: React.ReactNode }) {
         >
           {!recording ? (isRerecord ? "다시 녹음" : "녹음 시작") : "녹음 완료"}
         </Button>
-        {children}
+        {children || <div className="w-64" />}
       </div>
     </div>
   );

@@ -6,22 +6,22 @@ import toast from "react-hot-toast";
 export const LinkButton = ({
   to,
   back,
-  title,
   disabled,
   errorMessage,
   onBeforeNavigate,
+  children,
 }: {
   to: string;
   back?: boolean;
-  title: string;
   disabled?: boolean;
   errorMessage?: string;
   onBeforeNavigate?: () => Promise<any>;
+  children?: React.ReactNode;
 }) => {
   const router = useRouter();
 
   return (
-    <div className="fixed bottom-4 right-4 flex gap-2 text-2xl text-white">
+    <div className="fixed bottom-4 right-4 flex gap-2 text-[26px] text-white">
       {back && (
         <button
           onClick={() => {
@@ -31,7 +31,7 @@ export const LinkButton = ({
               router.push("/");
             }
           }}
-          className="flex h-[59px] w-[59px] items-center justify-center rounded-md border border-white bg-white bg-gradient-to-r text-5xl text-sub"
+          className="flex h-[65px] w-[62px] items-center justify-center rounded-md border border-white bg-white bg-gradient-to-r text-5xl text-sub"
         >
           <span className="icon-[weui--back-filled]"></span>
         </button>
@@ -50,10 +50,8 @@ export const LinkButton = ({
         }}
         className="border-whit rounded-md border bg-gradient-to-r from-sub to-main bg-[length:200%_200%] px-10 py-3 transition-all duration-500 hover:animate-gradient"
       >
-        <strong>{title}</strong>
+        <strong>{children}</strong>
       </button>
     </div>
   );
 };
-
-//transition duration-1000

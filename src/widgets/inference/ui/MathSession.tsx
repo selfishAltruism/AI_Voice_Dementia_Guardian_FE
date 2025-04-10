@@ -15,7 +15,7 @@ export const MathSession = ({
   return (
     <>
       {isStart ? (
-        <h1 className="mt-20 w-[750px]">
+        <h1 className="w-[750px]">
           {inferenceExample[inferenceExampleIds].ref}
         </h1>
       ) : (

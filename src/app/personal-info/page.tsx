@@ -145,7 +145,6 @@ const PersonalInfo = () => {
       </div>
 
       <LinkButton
-        title="검사 시작"
         to="/inference/1"
         back
         disabled={
@@ -156,7 +155,9 @@ const PersonalInfo = () => {
         }
         errorMessage="모든 정보를 입력해주세요."
         onBeforeNavigate={postUserInfo}
-      />
+      >
+        검사 시작
+      </LinkButton>
     </>
   );
 };

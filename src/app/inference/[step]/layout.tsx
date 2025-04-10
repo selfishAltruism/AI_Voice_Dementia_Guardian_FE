@@ -14,7 +14,9 @@ const InferenceLayout = ({
       <InferenceHeader step={+step} />
       {children}
       {step !== "12" && (
-        <LinkButton to={"/inference/" + (+step + 1)} back title="다음" />
+        <LinkButton to={"/inference/" + (+step + 1)} back>
+          다음
+        </LinkButton>
       )}
     </>
   );

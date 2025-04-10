@@ -124,11 +124,12 @@ const Agreement = () => {
       </main>
       <LinkButton
         back
-        title="다음"
         to="/personal-info"
         disabled={!agreePersonalInfo}
         errorMessage="필수 사항을 동의해주세요."
-      />
+      >
+        다음
+      </LinkButton>
     </>
   );
 };

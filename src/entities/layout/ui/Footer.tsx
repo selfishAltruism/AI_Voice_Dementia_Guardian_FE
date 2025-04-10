@@ -1,5 +1,5 @@
 export const Footer = () => (
-  <footer className="p-4 text-xs">
+  <footer className="fixed bottom-0 p-4 text-xs">
     <p className="mb-1 text-start">
       <strong>핏티</strong> 서울특별시 동작구 흑석로 84, 108관 202호
     </p>

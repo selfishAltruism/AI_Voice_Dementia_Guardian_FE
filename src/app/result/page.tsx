@@ -19,7 +19,9 @@ export default function Result() {
 
       <div className="h-[360px] w-[2px] rounded-md bg-white" />
       <div className="text-start leading-relaxed"></div>
-      <LinkButton title="나가기" to="/" />
+      <LinkButton to="/">
+        <span className="icon-[lsicon--out-of-warehouse-filled] -mb-3 h-[40px] w-[40px]" />
+      </LinkButton>
     </div>
   );
 }

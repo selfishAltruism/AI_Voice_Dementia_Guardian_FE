@@ -30,12 +30,12 @@ export const useApi = () => {
     }
   };
 
-  //TODO: 테스트 코드
-  const handleDummyUpload = async () => {
+  const postInferenceInput = async () => {
     const formData = new FormData();
 
     formData.append("userId", "" + inferenceInputDataStore.userId);
 
+    // 테스트 데이터
     // public 디렉토리의 test.wav 파일을 fetch
     const response = await fetch("/test.wav");
     const blob = await response.blob();
@@ -62,5 +62,5 @@ export const useApi = () => {
     }
   };
 
-  return { postUserInfo, handleDummyUpload };
+  return { postUserInfo, postInferenceInput };
 };

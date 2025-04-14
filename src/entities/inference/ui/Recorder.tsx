@@ -30,7 +30,7 @@ export function Recorder({ children }: { children?: React.ReactNode }) {
         );
         setElapsedTime(elapsedSeconds);
 
-        if (elapsedSeconds >= 20) {
+        if (elapsedSeconds >= 60) {
           //console.log("⏳ Recording reached 60 minutes. Stopping...");
           setRecording(false);
         }

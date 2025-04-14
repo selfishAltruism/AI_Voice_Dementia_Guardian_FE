@@ -14,6 +14,9 @@ const nanumGothic = Nanum_Gothic({
 export const metadata: Metadata = {
   title: "AI 음성 치매 지킴이",
   description: "음성 분류 모델 기반 치매 판단 웹 서비스",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

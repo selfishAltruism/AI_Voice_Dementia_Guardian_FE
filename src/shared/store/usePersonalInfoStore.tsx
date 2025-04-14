@@ -48,7 +48,7 @@ export const usePersonalInfoStore = create<PersonalInfo>((set, get) => ({
   educationLevel: null,
   setEducationLevel: (educationLevel) => set(() => ({ educationLevel })),
 
-  previousTestResults: null,
+  previousTestResults: "",
   setPreviousTestResults: (previousTestResults) =>
     set(() => ({ previousTestResults })),
 

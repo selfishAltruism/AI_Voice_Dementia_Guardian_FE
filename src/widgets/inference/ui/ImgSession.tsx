@@ -15,10 +15,10 @@ export const ImgSession = ({
   return (
     <>
       {isStart ? (
-        <div className="w-[750px]">
+        <div className="flex w-[750px] items-center justify-center">
           <img
             src={inferenceExample[inferenceExampleIds].ref}
-            className="h-60 w-60 rounded-md"
+            className="h-72 w-72 rounded-md"
           />
         </div>
       ) : (

@@ -110,7 +110,7 @@ const PersonalInfo = () => {
               label=""
               value={previousTestResults}
               options={[
-                { value: null, label: "이전 검사 결과를 선택해주세요." },
+                { value: "", label: "이전 검사 결과를 선택해주세요." },
                 { value: "잘 모르겠어요.", label: "잘 모르겠어요." },
                 {
                   value: "조금 걱정된다고 들은 적 있어요.",

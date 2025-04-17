@@ -44,7 +44,6 @@ const PersonalInfo = () => {
 
   return (
     <>
-      <div className="h-[52px]" />
       <h1 className="w-[700px]">
         정확한 진단을 위해
         <br />
@@ -130,7 +129,7 @@ const PersonalInfo = () => {
               }}
             />
           ) : (
-            <div className="h-[52px]" />
+            <div className="h-[54px]" />
           )}
           <Checkbox
             onClick={() =>

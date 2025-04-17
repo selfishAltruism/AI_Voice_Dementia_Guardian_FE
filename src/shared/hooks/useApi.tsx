@@ -54,9 +54,16 @@ export const useApi = () => {
     }
 
     try {
-      const res = await FORMAPI.post("/upload", formData);
+      const { data: res } = (await FORMAPI.post(
+        "/upload",
+        formData,
+      )) as AxiosResponse<Res.Upload>;
 
-      console.log("Success:", res.data);
+      // console.log("Success:", res.data);
+
+      if (res.status !== "success") console.error(res.message);
+
+      return res.data.confidence;
     } catch (err) {
       console.error("Upload error:", err);
     }

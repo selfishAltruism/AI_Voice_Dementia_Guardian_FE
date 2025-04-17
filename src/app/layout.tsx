@@ -38,7 +38,20 @@ export default function RootLayout({
         />
       </head>
       <body className={nanumGothic.className}>
-        <Toaster position="top-right" reverseOrder={false} />
+        <Toaster
+          position="top-center"
+          containerStyle={{
+            top: "calc(50% - 40px)",
+          }}
+          toastOptions={{
+            style: {
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.8)",
+              borderRadius: "8px",
+              padding: "16px 20px",
+              fontWeight: "bold",
+            },
+          }}
+        />
         <ScreenGuard />
         <div className="flex min-h-screen flex-col">
           <main className="flex flex-grow flex-col items-center justify-center">

@@ -99,6 +99,8 @@ export function InputDate({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
+        min="1900-01-01"
+        max="2099-12-31"
         className={`${baseInputStyle} border-gray-300 h-[50px] bg-white text-main`}
       />
     </div>

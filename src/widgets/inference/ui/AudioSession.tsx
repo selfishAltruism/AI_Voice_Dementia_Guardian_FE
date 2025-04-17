@@ -14,6 +14,7 @@ export const AudioSession = ({
 
   return (
     <>
+      {isReplay.current && <div className="h-[205px]" />}
       <h1 className="w-[750px]">
         {inferenceExample[inferenceExampleIds].child}
       </h1>

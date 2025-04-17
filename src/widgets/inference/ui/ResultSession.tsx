@@ -18,8 +18,8 @@ export const ResultSession = ({
 
   useEffect(() => {
     (async () => {
-      await postInferenceInput();
-      router.push("/result");
+      const confidence = await postInferenceInput();
+      router.push("/result/" + confidence);
     })();
   }, []);
 

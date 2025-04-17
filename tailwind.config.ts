@@ -20,11 +20,16 @@ export default {
     extend: {
       animation: {
         gradient: "gradientBG 1.5s ease infinite",
+        "pulse-heart": "pulse-heart 1s infinite",
       },
       keyframes: {
         gradientBG: {
           "0%": { backgroundPosition: "200% 50%" },
           "100%": { backgroundPosition: "0% 50%" },
+        },
+        "pulse-heart": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.04)" },
         },
       },
     },

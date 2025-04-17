@@ -1,6 +1,10 @@
 "use client";
 
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+
+import { usePersonalInfoStore } from "@/shared/store";
 import { inferenceExample } from "@/shared";
 import {
   AudioSession,
@@ -18,13 +22,15 @@ const Inference = ({
   };
 }) => {
   const router = useRouter();
+  const isPersonalInfoComplete = usePersonalInfoStore(
+    (state) => state.isPersonalInfoComplete,
+  );
 
-  /* useEffect(() => {
+  useEffect(() => {
     if (isPersonalInfoComplete()) return;
     toast.error("기본 인적 사항을 입력해주세요.");
     router.replace("/personal-info");
   }, []);
- */
 
   return (
     <>

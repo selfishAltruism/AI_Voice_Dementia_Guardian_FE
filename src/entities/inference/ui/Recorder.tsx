@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { convertToFlac } from "../utils";
-import { Button } from "@/entities/layout";
+import { Button, FocusButton } from "@/entities/layout";
 
 export function Recorder({ children }: { children?: React.ReactNode }) {
   const [recording, setRecording] = useState(false);
@@ -137,32 +137,46 @@ export function Recorder({ children }: { children?: React.ReactNode }) {
     return `${mm}:${ss}`;
   };
 
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    // 초기에도 실행 (혹시 렌더 타이밍 차이 방지)
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center">
       {/* 웨이브 그래프 */}
+
+      <div className="mb-6 flex w-[770px] items-center gap-3">
+        <p className="ml-[9px] mr-[9px] flex h-[74px] flex-1 items-center justify-center rounded-md border border-white bg-white bg-gradient-to-r text-[45px] font-bold text-sub">
+          {formatTime(elapsedTime)}
+        </p>
+        <FocusButton
+          onClick={() => setRecording(!recording)}
+          className="flex-1 bg-opacity-0 text-white"
+        >
+          {!recording ? (isRerecord ? "다시 녹음" : "녹음 시작") : "녹음 완료"}
+        </FocusButton>
+        {children}
+      </div>
+
       {recording ? (
         <canvas
           ref={canvasRef}
-          width={740}
+          width={width}
           height={150}
           className="rounded"
           style={{ backgroundColor: "transparent", marginBottom: "30px" }}
         />
       ) : (
-        <div className="mb-[105px] mt-[73px] h-[2px] w-[750px] rounded-md bg-white" />
+        <div className="mb-[105px] mt-[73px] h-[2px] w-screen rounded-md bg-white" />
       )}
-      <div className="flex items-center gap-3">
-        <p className="ml-[9px] mr-[9px] flex h-[74px] w-[235px] items-center justify-center rounded-md border border-white bg-white bg-gradient-to-r text-[45px] font-bold text-sub">
-          {formatTime(elapsedTime)}
-        </p>
-        <Button
-          onClick={() => setRecording(!recording)}
-          className="bg-opacity-0 text-white"
-        >
-          {!recording ? (isRerecord ? "다시 녹음" : "녹음 시작") : "녹음 완료"}
-        </Button>
-        {children || <div className="w-64" />}
-      </div>
     </div>
   );
 }

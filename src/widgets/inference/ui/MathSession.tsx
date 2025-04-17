@@ -16,11 +16,12 @@ export const MathSession = ({
     <>
       {isStart ? (
         <h1 className="w-[750px]">
+          <div className="h-[205px]" />
           {inferenceExample[inferenceExampleIds].ref}
         </h1>
       ) : (
         <>
-          <h1 className="mt-20 w-[750px]">
+          <h1 className="w-[750px]">
             {inferenceExample[inferenceExampleIds].child}
           </h1>
           <div className="mb-2 mt-1 h-[7px] w-[750px] rounded-lg bg-gradient-to-r from-sub to-main bg-[length:200%_200%]" />
